@@ -1,6 +1,25 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: Verdana, sans-serif;
   padding: 20px;
+  margin-top: 10%;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+  font-size: 200%;
+  margin-bottom: 2%;
+}
+
+.editor {
+  padding: 20px;
+  min-height: 100px;
+  margin-bottom: 10px;
 }
 
 form {
@@ -13,6 +32,13 @@ textarea {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
+  border-radius: .3vw;
+  border: 1px solid black;
+
+}
+
+textarea {
+  resize: vertical;
 }
 
 button {
@@ -28,10 +54,9 @@ button:hover {
   background-color: #45a049;
 }
 
-.editor {
-  padding: 20px;
-  min-height: 100px;
-  margin-bottom: 10px;
+#post_img{
+  border: none;
 }
+
 
 
