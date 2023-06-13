@@ -4,6 +4,12 @@
 const express = require('express');
 const router = express.Router();
 const app = express();
+  var bodyParser = require('body-parser');
+
+  app.use(bodyParser.urlencoded({
+    extended: true
+  }));
+  app.use(bodyParser.json());
 const port = 3000;
 
 // mongodb connection setup
@@ -58,8 +64,8 @@ mollit anim id est laborum.`
 // });
 
 // Create one
-app.post('/', async (req, res)=> {
-  let collection = await db.collection("posts");
+app.post('/', (req, res)=> {
+  // let collection = await db.collection("posts");
   // let newPost = new Post({
   //   _id: 3, 
   //   post_title: "New Post", 
@@ -67,8 +73,8 @@ app.post('/', async (req, res)=> {
   //   author_id: 2, 
   //   created_at: new Date()
   // });
+  console.log(res)
     let newPost = new Post({
-    _id: db.collection("posts").count()+1, 
     post_title: req.body.post_title, 
     post_content: req.body.post_content, 
     post_url: req.body.post_url,
@@ -76,14 +82,14 @@ app.post('/', async (req, res)=> {
     author_id: req.body.author_id, 
     created_at: new Date(),
   });
-  let result = await collection.insertOne(newPost);
+  // let result = await collection.insertOne(newPost);
   res.send(`Successfully added! ${JSON.stringify(req.body)}`)
 
-  // newPost.save()
-  // .then(
-  //   () => console.log("Successfully added!"), 
-  //   (err) => console.log(err)
-  // )
+   newPost.save()
+   .then(
+     () => console.log("Successfully added!"), 
+     (err) => console.log(err)
+   )
 });
 
 // Read one
